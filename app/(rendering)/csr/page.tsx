@@ -1,5 +1,6 @@
 "use client"; // 이 파일이 클라이언트 컴포넌트임을 명시. Next.js 13 이상의 app 디렉토리에서 필요.
 
+import PostComponent from "@/components/PostComponent";
 import { Post } from "@/types/posts"; // Post 데이터 타입을 정의한 파일을 가져옴.
 import React, { useEffect, useState } from "react"; // React 훅들을 가져옴.
 
@@ -11,9 +12,12 @@ const page = () => {
   // useEffect 훅: 컴포넌트가 마운트될 때 한 번 실행.
   useEffect(() => {
     // API 호출
-    fetch("http://localhost:4000/posts/1") // JSON Server에서 데이터를 가져옴.
+    fetch("http://localhost:4000/posts/5") // JSON Server에서 데이터를 가져옴.
       .then((response) => response.json()) // 응답 데이터를 JSON 형식으로 변환.
       .then((data: Post) => {
+        if (!data.id || !data.title || !data.body) {
+          throw new Error("Invalid data structure");
+        }
         setData(data); // 변환된 데이터를 상태에 저장.
         setLoading(false); // 로딩 상태를 false로 변경.
       })
@@ -31,15 +35,9 @@ const page = () => {
 
   // 정상적으로 데이터를 로드했을 때 출력할 UI
   return (
-    <div className="custom-main">
-      {/* 데이터의 title을 렌더링 */}
-      <h1 className="h1">{data.title}</h1>
-
-      {/* 데이터의 body를 렌더링 */}
-      <div className="custom-contents-area">
-        <p className="custom-contents-text">{data.body}</p>
-      </div>
-    </div>
+    <>
+      <PostComponent post={data} />
+    </>
   );
 };
 

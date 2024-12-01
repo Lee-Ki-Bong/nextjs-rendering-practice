@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Home() {
-  const renderingMethods = ["csr", "ssg", "isr", "ssr", "ppr", "csg"];
+  const renderingMethods = ["csr", "ssr", "isr", "csg", "ssg", "ppr"];
 
   return (
     <div className="custom-main">

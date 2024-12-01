@@ -4,6 +4,11 @@
       "id": 1,
       "title": "CSR (Client-Side Rendering)",
       "body": "CSR(Client-Side Rendering)은 클라이언트, 즉 브라우저에서 데이터를 가져와 렌더링하는 방식입니다. 초기 HTML은 비어 있으며, 브라우저에서 JavaScript를 실행하여 데이터를 로드한 후 화면을 완성합니다. 이 방식은 사용자 상호작용이 많은 애플리케이션에 적합하지만, SEO(검색 엔진 최적화)에는 적합하지 않을 수 있습니다."
+    },
+    {
+      "id": 2,
+      "title": "SSR (Server-Side Rendering)",
+      "body": "SSR(Server-Side Rendering)은 요청 시 서버에서 데이터를 가져와 HTML을 생성한 후 클라이언트에 전달하는 방식입니다. 최신 데이터를 즉시 제공하며 SEO(검색 엔진 최적화)에 적합하지만, 서버 부하가 증가할 수 있습니다. [참고] app 디렉토리에서는 getServerSideProps가 지원되지 않습니다."
     }
   ]
 }
