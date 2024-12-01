@@ -3,6 +3,7 @@
 import PostComponent from "@/components/PostComponent";
 import { Post } from "@/types/posts";
 import React, { useEffect, useState } from "react";
+import { Skeleton } from "./ui/skeleton";
 
 const DynamicComponent = () => {
   const [data, setData] = useState<Post | null>(null);
@@ -25,7 +26,16 @@ const DynamicComponent = () => {
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="custom-main space-y-3">
+        <Skeleton className="h-[325px] w-[450px] rounded-xl" />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[450px]" />
+          <Skeleton className="h-4 w-[400px]" />
+        </div>
+      </div>
+    );
 
   if (!data) return <p>No Data</p>;
 
