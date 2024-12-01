@@ -9,7 +9,7 @@ const RenderingLayout = ({ children }: { children: React.ReactNode }) => {
           HOME
         </Link>
       </div>
-      <div className="custom-main">{children}</div>
+      <div className="custom-main p-20">{children}</div>
     </>
   );
 };

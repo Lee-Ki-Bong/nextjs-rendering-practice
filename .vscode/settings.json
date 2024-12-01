@@ -5,5 +5,9 @@
     "source.fixAll.eslint": "explicit"
   },
   // Prettier를 기본 포맷터로 설정
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "editor.tokenColorCustomizations": {
+    "comments": "#908fa2"
+  }
 }

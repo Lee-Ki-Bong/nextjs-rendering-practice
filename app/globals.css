@@ -21,11 +21,22 @@ body {
 }
 
 @layer utilities {
+  .h1 {
+    @apply text-4xl font-bold;
+  }
   .custom-main {
     @apply flex flex-col items-center justify-center h-screen;
   }
 
   .custom-button {
     @apply py-2 px-4 bg-blue-500 text-white rounded cursor-pointer text-lg;
+  }
+
+  .custom-contents-area {
+    @apply px-6 py-10 max-w-7xl mx-auto;
+  }
+
+  .custom-contents-text {
+    @apply font-normal text-[16px] break-all;
   }
 }
