@@ -4,7 +4,7 @@ import PostComponent from "@/components/PostComponent";
 import { Post } from "@/types/posts"; // Post 데이터 타입을 정의한 파일을 가져옴.
 import React, { useEffect, useState } from "react"; // React 훅들을 가져옴.
 
-const page = () => {
+const Page = () => {
   // 상태 변수 선언
   const [data, setData] = useState<Post | null>(null); // API에서 가져온 데이터를 저장할 상태.
   const [loading, setLoading] = useState(true); // 데이터 로딩 상태를 저장.
@@ -12,7 +12,7 @@ const page = () => {
   // useEffect 훅: 컴포넌트가 마운트될 때 한 번 실행.
   useEffect(() => {
     // API 호출
-    fetch("http://localhost:4000/posts/5") // JSON Server에서 데이터를 가져옴.
+    fetch("http://localhost:4000/posts/1") // JSON Server에서 데이터를 가져옴.
       .then((response) => response.json()) // 응답 데이터를 JSON 형식으로 변환.
       .then((data: Post) => {
         if (!data.id || !data.title || !data.body) {
@@ -41,4 +41,4 @@ const page = () => {
   );
 };
 
-export default page; // 이 컴포넌트를 기본 내보내기.
+export default Page; // 이 컴포넌트를 기본 내보내기.
