@@ -1,0 +1,9 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "CSR (Client-Side Rendering)",
+      "body": "This is a post fetched using Client-Side Rendering."
+    }
+  ]
+}
