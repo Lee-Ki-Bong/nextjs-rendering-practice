@@ -19,3 +19,13 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+  .custom-main {
+    @apply flex flex-col items-center justify-center h-screen;
+  }
+
+  .custom-button {
+    @apply py-2 px-4 bg-blue-500 text-white rounded cursor-pointer text-lg;
+  }
+}
