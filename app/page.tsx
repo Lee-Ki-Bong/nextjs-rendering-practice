@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Home() {
-  const renderingMethods = ["csr", "ssr", "isr", "csg", "ssg", "ppr"];
+  const renderingMethods = ["csr", "ssr", "isr", "ssg", "csg", "ppr"];
 
   return (
     <div className="custom-main">
@@ -13,7 +13,7 @@ export default function Home() {
             href={`/${renderingType}`}
             className="custom-button"
           >
-            {renderingType}
+            {renderingType.toLocaleUpperCase()}
           </Link>
         ))}
       </div>
