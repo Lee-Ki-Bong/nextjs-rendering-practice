@@ -1,47 +1,27 @@
-"use client";
-
 import PostComponent from "@/components/PostComponent";
 import { Post } from "@/types/posts";
-import React, { useEffect, useState } from "react";
-import { Skeleton } from "./ui/skeleton";
+import React from "react";
 
-const DynamicComponent = () => {
-  const [data, setData] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(true);
+// 데이터 패칭 함수
+const fetchPost = async (id: string): Promise<Post> => {
+  const response = await fetch(`http://localhost:4000/posts/${id}`, {
+    cache: "no-store", // 서스펜스 스켈레톤 보기위해서 데이터 최신화를 위해 캐시 비활성화 (필요에 따라 조정)
+  });
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const data: Post = await response.json();
+  if (!data.id || !data.title || !data.body) {
+    throw new Error("Invalid data structure");
+  }
+  return data;
+};
 
-  // useEffect 훅: 컴포넌트가 마운트될 때 한 번 실행.
-  useEffect(() => {
-    fetch("http://localhost:4000/posts/5")
-      .then((response) => response.json())
-      .then((data: Post) => {
-        if (!data.id || !data.title || !data.body) {
-          throw new Error("Invalid data structure");
-        }
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading)
-    return (
-      <div className="custom-main space-y-3">
-        <Skeleton className="h-[325px] w-[450px] rounded-xl" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[450px]" />
-          <Skeleton className="h-4 w-[400px]" />
-        </div>
-      </div>
-    );
-
-  if (!data) return <p>No Data</p>;
-
+const DynamicComponent = async ({ id }: { id: string }) => {
+  const post: Post = await fetchPost(id);
   return (
     <>
-      <PostComponent post={data} />
+      <PostComponent post={post} />
     </>
   );
 };
